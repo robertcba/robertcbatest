@@ -1,8 +1,15 @@
 # Public repository created for interview
 # How to run this program
+Two methods to run this program:
+Method 1:
 There are three test files - testPet.py, testStore.py, testUser.py.
 Each of these files can be run separately as 'python filename.py' to test separately.
 Also, the main regression file 'regFile.py' can be executed as 'python regFile.py' to run all the tests.
+
+Method 2:
+Workflow has been created in the main branch. Any commit to any of the branches would trigger the regression tests.
+Also, this workflow can be triggered manually by clicking 'Run workflow' in the  Actions page - https://github.com/robertcba/robertcbatest/actions/workflows/regression-tests.yml
+
 
 SAMPLE TEST RESULTS:
 NOTE: testInvalidUserLogin is failing because of a bug in the swagger 
