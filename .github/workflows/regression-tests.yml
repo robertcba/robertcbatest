@@ -7,10 +7,10 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: 
-       - swaggertest
+       - Robert-CBATest
   pull_request:
     branches: 
-       - swaggertest
+       - Robert-CBATest
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -18,7 +18,7 @@ on:
                   branch:
                           description: 'Branch to checkout'
                           required: true
-                          default: 'swaggertest'
+                          default: 'Robert-CBATest'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-                ref: 'swaggertest'
+                ref: 'Robert-CBATest'
 
       - name: Set up python
         uses: actions/setup-python@v4
