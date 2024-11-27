@@ -1,0 +1,46 @@
+# Workflow to trigger regression tests regFile.py whenever a new commit made and explicitly trigger when required.
+
+name: branch-swaggertests
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: 
+       - Robert-CBATest
+  pull_request:
+    branches: 
+       - Robert-CBATest
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+          inputs:
+                  branch:
+                          description: 'Branch to checkout'
+                          required: true
+                          default: 'Robert-CBATest'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v4
+        with:
+                ref: 'Robert-CBATest'
+
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+                python-version: '3.x'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Custom tasks
+      - name: Run regression tests
+        run: |
+          python regFile.py
